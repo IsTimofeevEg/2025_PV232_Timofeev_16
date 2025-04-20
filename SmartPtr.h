@@ -40,6 +40,7 @@ public:
         obj = nullptr;
         return p;
     }
+
     void reset(T* p = nullptr) {
         if (obj != p) {
             delete obj;

@@ -2,22 +2,33 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "DirectoryMonitor.h"
+#include "SmartPtr.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
 }
-QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void addDirectory();
+    void removeDirectory();
+    void setLogFile();
+    void showLogContents();
+    void updateLogDisplay();
+
 private:
+    void updateDirectoryList();
+
     Ui::MainWindow *ui;
+    smart_ptr<DirectoryMonitor> monitor;
 };
+
 #endif // MAINWINDOW_H
